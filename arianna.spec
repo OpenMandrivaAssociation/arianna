@@ -64,10 +64,10 @@ authors.
 
 %prep
 %autosetup -p1
+%cmake_kde5
 
 %build
-%cmake_kde5
-%ninja_build
+%ninja_build -C build
 
 %install
 %ninja_install -C build
@@ -82,5 +82,3 @@ authors.
 %{_bindir}/arianna
 %{_datadir}/qlogging-categories5/arianna.categories
 %{_datadir}/icons/hicolor/scalable/apps/org.kde.arianna.svg
-
-%changelog
