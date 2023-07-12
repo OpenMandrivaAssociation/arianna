@@ -55,8 +55,6 @@ Requires:       kquickcharts
 Requires:       qt5-database-plugin-sqlite
 Requires:       qt5-qtquickcontrols2
 Requires:       qt5-qtwebchannel
-# No QtWebEngine for other archs
-ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{riscv}
 
 %description
 An ebook reader and library management app supporting ".epub" files. Arianna
