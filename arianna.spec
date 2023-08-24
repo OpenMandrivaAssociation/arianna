@@ -1,31 +1,15 @@
-#
-# spec file for package arianna
-# 20230711120750
-# Copyright (c) 2023 SUSE LLC
-#
-# All modifications and additions to the file contributed by third parties
-# remain the property of their copyright owners, unless otherwise agreed
-# upon. The license for this file, and modifications and additions to the
-# file, is the same license as for the pristine package itself (unless the
-# license for the pristine package is not an Open Source License, in which
-# case the license is the MIT License). An "Open Source License" is a
-# license that conforms to the Open Source Definition (Version 1.9)
-# published by the Open Source Initiative.
-#
+%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
-
-%bcond_without released
 Name:           arianna
-Version:        1.1.0
+Version:        23.08.0
 Release:        0
 Summary:        Ebook reader and library management app
 License:        GPL-3.0-only
 URL:            https://apps.kde.org/arianna/
-Source0:        https://download.kde.org/stable/arianna/%{name}-%{version}.tar.xz
-%if %{with released}
-Source1:        https://download.kde.org/stable/arianna/%{name}-%{version}.tar.xz.sig
-# https://carlschwan.eu/gpg-02325448204e452a/
-Source2:        arianna.keyring
+%if 0%{?git}
+Source0:        https://invent.kde.org/plasma-mobile/%{name}/-/archive/master/%{name}-master.tar.bz2
+%else
+Source0:        http://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %endif
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Baloo)
@@ -60,7 +44,6 @@ Requires:       qt5-qtwebchannel
 An ebook reader and library management app supporting ".epub" files. Arianna
 discovers your books automatically, and sorts them by categories, genres and
 authors.
-
 
 %prep
 %autosetup -p1
