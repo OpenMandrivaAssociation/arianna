@@ -1,15 +1,26 @@
+%define git 20240218
+%define gitbranch release/24.02
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name:           plasma6-arianna
-Version:        24.01.95
-Release:        1
+Version:        24.01.96
+Release:        %{?git:0.%{git}.}1
 Summary:        Ebook reader and library management app
 License:        GPL-3.0-only
 URL:            https://apps.kde.org/arianna/
 %if 0%{?git}
+%if 0%{?git:1}
+Source0:	https://invent.kde.org/graphics/arianna/-/archive/%{gitbranch}/arianna-%{gitbranchd}.tar.bz2#/arianna-%{git}.tar.bz2
+%else
 Source0:        https://invent.kde.org/plasma-mobile/%{name}/-/archive/master/%{name}-master.tar.bz2
+%endif
+%else
+%if 0%{?git:1}
+Source0:	https://invent.kde.org/graphics/arianna/-/archive/%{gitbranch}/arianna-%{gitbranchd}.tar.bz2#/arianna-%{git}.tar.bz2
 %else
 Source0:        http://download.kde.org/%{stable}/release-service/%{version}/src/arianna-%{version}.tar.xz
+%endif
 %endif
 BuildRequires:  cmake(KF6Archive)
 BuildRequires:  cmake(KF6Baloo)
@@ -46,7 +57,7 @@ discovers your books automatically, and sorts them by categories, genres and
 authors.
 
 %prep
-%autosetup -p1 -n arianna-%{?git:master}%{!?git:%{version}}
+%autosetup -p1 -n arianna-%{?git:%{gitbranchd}}%{!?git:%{version}}
 %cmake \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
 	-G Ninja
