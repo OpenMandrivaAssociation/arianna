@@ -5,7 +5,7 @@
 
 Name:           plasma6-arianna
 Version:        24.02.0
-Release:        %{?git:0.%{git}.}1
+Release:        %{?git:0.%{git}.}2
 Summary:        Ebook reader and library management app
 License:        GPL-3.0-only
 URL:            https://apps.kde.org/arianna/
