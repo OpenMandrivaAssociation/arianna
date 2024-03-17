@@ -51,9 +51,9 @@ BuildRequires:  cmake(KF6QuickCharts)
 Requires:       kirigami-addons
 Requires:       kirigami2
 Requires:       kquickcharts
-Requires:       qt6-database-plugin-sqlite
-Requires:       qt6-qtquickcontrols2
-Requires:       qt6-qtwebchannel
+Requires:       qt6-qtbase-sql-sqlite
+Requires:       %mklibname Qt6QuickControls2
+Requires:       %mklibname Qt6WebChannel
 
 %description
 An ebook reader and library management app supporting ".epub" files. Arianna
