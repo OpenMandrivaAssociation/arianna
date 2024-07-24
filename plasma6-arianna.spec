@@ -5,7 +5,7 @@
 
 Name:           plasma6-arianna
 Version:        24.05.2
-Release:        %{?git:0.%{git}.}1
+Release:        %{?git:0.%{git}.}2
 Summary:        Ebook reader and library management app
 License:        GPL-3.0-only
 URL:            https://apps.kde.org/arianna/
@@ -49,8 +49,8 @@ BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  cmake(KF6QuickCharts)
 Requires:       kirigami-addons
-Requires:       kirigami2
-Requires:       kquickcharts
+Requires:       kf6-kirigami
+Requires:       kf6-kquickcharts
 Requires:       qt6-qtbase-sql-sqlite
 Requires:       %mklibname Qt6QuickControls2
 Requires:       %mklibname Qt6WebChannel
