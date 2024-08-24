@@ -4,8 +4,8 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name:           plasma6-arianna
-Version:        24.05.2
-Release:        %{?git:0.%{git}.}2
+Version:        24.08.0
+Release:        %{?git:0.%{git}.}1
 Summary:        Ebook reader and library management app
 License:        GPL-3.0-only
 URL:            https://apps.kde.org/arianna/
