@@ -4,7 +4,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name:           arianna
-Version:        25.04.0
+Version:        25.04.3
 Release:        %{?git:0.%{git}.}1
 Summary:        Ebook reader and library management app
 License:        GPL-3.0-only
@@ -57,26 +57,17 @@ Requires:       qt6-qtbase-sql-sqlite
 Requires:       %mklibname Qt6QuickControls2
 Requires:       %mklibname Qt6WebChannel
 
+%rename plasma6-arianna
+
+BuildSystem:	cmake
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+
 %description
 An ebook reader and library management app supporting ".epub" files. Arianna
 discovers your books automatically, and sorts them by categories, genres and
 authors.
 
-%prep
-%autosetup -p1 -n arianna-%{?git:%{gitbranchd}}%{!?git:%{version}}
-%cmake \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-
-%build
-%ninja_build -C build
-
-%install
-%ninja_install -C build
-
-%find_lang arianna
-
-%files -f arianna.lang
+%files -f %{name}.lang
 %license LICENSES/*
 %doc README.md
 %{_datadir}/applications/org.kde.arianna.desktop
