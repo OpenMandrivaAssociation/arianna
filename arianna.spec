@@ -4,7 +4,7 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Name:           arianna
-Version:        25.08.0
+Version:        25.08.1
 Release:        %{?git:0.%{git}.}1
 Summary:        Ebook reader and library management app
 License:        GPL-3.0-only
