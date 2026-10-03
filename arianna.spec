@@ -5,7 +5,7 @@
 
 Name:           arianna
 Version:        26.08.1
-Release:        %{?git:0.%{git}.}1
+Release:        %{?git:0.%{git}.}2
 Summary:        Ebook reader and library management app
 License:        GPL-3.0-only
 URL:            https://apps.kde.org/arianna/
